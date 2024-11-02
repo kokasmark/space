@@ -1,0 +1,922 @@
+{"spacecraft": [
+			{
+				"_name": "ace",
+				"_explorerName": "sc_ace",
+				"_friendlyName": "Advanced Composition Explorer",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "apm1",
+				"_explorerName": "",
+				"_friendlyName": "Astrobotic Peregrine 1 Mission",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "argo",
+				"_explorerName": "",
+				"_friendlyName": "ArgoMoon",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "atot",
+				"_explorerName": "",
+				"_friendlyName": "Advanced Tracking and Observational Techniques"
+			},
+			{
+				"_name": "bepi",
+				"_explorerName": "",
+				"_friendlyName": "BepiColombo",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "bios",
+				"_explorerName": "",
+				"_friendlyName": "BioSentinel",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "caps",
+				"_explorerName": "",
+				"_friendlyName": "CAPSTONE",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "cas",
+				"_explorerName": "sc_cassini",
+				"_friendlyName": "Cassini",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "cass",
+				"_explorerName": "sc_cassini",
+				"_friendlyName": "Testing",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "ch1",
+				"_explorerName": "sc_chandrayaan",
+				"_friendlyName": "Chandrayaan"
+			},
+			{
+				"_name": "ch2",
+				"_explorerName": "",
+				"_friendlyName": "Chandrayaan-2"
+			},
+			{
+				"_name": "ch2l",
+				"_explorerName": "",
+				"_friendlyName": "Chandrayaan-2 Lander",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "ch2o",
+				"_explorerName": "",
+				"_friendlyName": "Chandrayaan-2 Orbiter",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "ch3",
+				"_explorerName": "",
+				"_friendlyName": "Chandrayaan-3",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "chdr",
+				"_explorerName": "sc_chandra",
+				"_friendlyName": "Chandra",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "clu1",
+				"_explorerName": "sc_cluster_1",
+				"_friendlyName": "Cluster 1",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "clu2",
+				"_explorerName": "sc_cluster_2",
+				"_friendlyName": "Cluster 2",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "clu3",
+				"_explorerName": "sc_cluster_3",
+				"_friendlyName": "Cluster 3",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "clu4",
+				"_explorerName": "sc_cluster_4",
+				"_friendlyName": "Cluster 4",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "cue3",
+				"_explorerName": "",
+				"_friendlyName": "CU Earth Escape Explorer",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "cusp",
+				"_explorerName": "",
+				"_friendlyName": "CubeSat for Solar Particles",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "dart",
+				"_explorerName": "",
+				"_friendlyName": "Double Asteroid Redirection Test",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "dawn",
+				"_explorerName": "sc_dawn",
+				"_friendlyName": "Dawn",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "dif",
+				"_explorerName": "sc_deep_impact",
+				"_friendlyName": "Deep Impact",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "dsco",
+				"_explorerName": "",
+				"_friendlyName": "Deep Space Climate Observatory (DSCOVR)",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "dsn",
+				"_explorerName": "",
+				"_friendlyName": "Testing"
+			},
+			{
+				"_name": "egs",
+				"_explorerName": "",
+				"_friendlyName": "EVN and Global Services"
+			},
+			{
+				"_name": "em1",
+				"_explorerName": "",
+				"_friendlyAcronym": "art1",
+				"_friendlyName": "Human Space Flight: Artemis I",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "em2",
+				"_explorerName": "",
+				"_friendlyName": "Human Space Flight: Artemis II"
+			},
+			{
+				"_name": "em3",
+				"_explorerName": "",
+				"_friendlyName": "Human Space Flight: Artemis III"
+			},
+			{
+				"_name": "emm",
+				"_explorerName": "",
+				"_friendlyName": "Emirates Mars Mission (Hope)",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "em-1",
+				"_explorerName": "",
+				"_friendlyName": "Exploration Mission-1",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "em-2",
+				"_explorerName": "",
+				"_friendlyName": "Exploration Mission-2"
+			},
+			{
+				"_name": "em-3",
+				"_explorerName": "",
+				"_friendlyName": "Exploration Mission-3"
+			},
+			{
+				"_name": "em-4",
+				"_explorerName": "",
+				"_friendlyName": "Exploration Mission-4"
+			},
+			{
+				"_name": "em-5",
+				"_explorerName": "",
+				"_friendlyName": "Exploration Mission-5"
+			},
+			{
+				"_name": "em-6",
+				"_explorerName": "",
+				"_friendlyName": "Exploration Mission-6"
+			},
+			{
+				"_name": "em-7",
+				"_explorerName": "",
+				"_friendlyName": "Exploration Mission-7"
+			},
+			{
+				"_name": "em-8",
+				"_explorerName": "",
+				"_friendlyName": "Exploration Mission-8"
+			},
+			{
+				"_name": "em-9",
+				"_explorerName": "",
+				"_friendlyName": "Exploration Mission-9"
+			},
+			{
+				"_name": "em-10",
+				"_explorerName": "",
+				"_friendlyName": "Exploration Mission-10"
+			},
+			{
+				"_name": "equl",
+				"_explorerName": "",
+				"_friendlyName": "EQUULEUS",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "escg",
+				"_explorerName": "",
+				"_friendlyName": "Engineering and Science Contract Group"
+			},
+			{
+				"_name": "eurc",
+				"_explorerName": "",
+				"_friendlyName": "Europa Clipper",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "eus",
+				"_explorerName": "",
+				"_friendlyName": "Exploration Upper Stage"
+			},
+			{
+				"_name": "gaia",
+				"_explorerName": "",
+				"_friendlyName": "Gaia",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "gbra",
+				"_explorerName": "",
+				"_friendlyName": "Ground Based Radio Astronomy"
+			},
+			{
+				"_name": "go10",
+				"_explorerName": "sc_goes_10",
+				"_friendlyName": "GOES 10"
+			},
+			{
+				"_name": "go11",
+				"_explorerName": "sc_goes_11",
+				"_friendlyName": "GOES 11"
+			},
+			{
+				"_name": "go12",
+				"_explorerName": "sc_goes_12",
+				"_friendlyName": "GOES 12"
+			},
+			{
+				"_name": "go13",
+				"_explorerName": "sc_goes_13",
+				"_friendlyName": "GOES 13"
+			},
+			{
+				"_name": "go14",
+				"_explorerName": "sc_goes_14",
+				"_friendlyName": "GOES 14"
+			},
+			{
+				"_name": "go15",
+				"_explorerName": "sc_goes_15",
+				"_friendlyName": "GOES 15"
+			},
+			{
+				"_name": "go16",
+				"_explorerName": "",
+				"_friendlyName": "GOES 16"
+			},
+			{
+				"_name": "go17",
+				"_explorerName": "",
+				"_friendlyName": "GOES 17"
+			},
+			{
+				"_name": "grla",
+				"_explorerName": "sc_grail_a",
+				"_friendlyName": "GRAIL A"
+			},
+			{
+				"_name": "grlb",
+				"_explorerName": "sc_grail_b",
+				"_friendlyName": "GRAIL B"
+			},
+			{
+				"_name": "gssr",
+				"_explorerName": "",
+				"_friendlyName": "Goldstone Solar System Radar"
+			},
+			{
+				"_name": "gtl",
+				"_explorerName": "sc_geotail",
+				"_friendlyName": "Geotail",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "gvrt",
+				"_explorerName": "",
+				"_friendlyName": "Goldstone Apple Valley Radio Telescope"
+			},
+			{
+				"_name": "hcra",
+				"_explorerName": "",
+				"_friendlyName": "Host Country Radio Astronomy"
+			},
+			{
+				"_name": "hmap",
+				"_explorerName": "",
+				"_friendlyName": "LunaH-Map",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "hst",
+				"_explorerName": "sc_hubble_space_telescope",
+				"_friendlyName": "Hubble Space Telescope",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "hyb2",
+				"_explorerName": "",
+				"_friendlyName": "Hayabusa-2",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "ice",
+				"_explorerName": "sc_ice",
+				"_friendlyName": "ISEE-3 Reboot",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "icps",
+				"_explorerName": "",
+				"_friendlyName": "Interim Cryogenic Propulsion Stage",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "imag",
+				"_explorerName": "sc_image",
+				"_friendlyName": "IMAGE",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "intg",
+				"_explorerName": "sc_integral",
+				"_friendlyName": "INTEGRAL",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "jno",
+				"_explorerName": "sc_juno",
+				"_friendlyName": "Juno",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "jnsa",
+				"_explorerName": "",
+				"_friendlyName": "Janus A",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "jnsb",
+				"_explorerName": "",
+				"_friendlyName": "Janus B",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "jwst",
+				"_explorerName": "",
+				"_friendlyName": "James Webb Space Telescope",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "kepl",
+				"_explorerName": "sc_kepler",
+				"_friendlyName": "Kepler",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "kplo",
+				"_explorerName": "",
+				"_friendlyName": "Korea Pathfinder Lunar Orbiter",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "lade",
+				"_explorerName": "sc_ladee",
+				"_friendlyName": "LADEE",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "lcro",
+				"_explorerName": "sc_lcross",
+				"_friendlyName": "LCROSS"
+			},
+			{
+				"_name": "lfl",
+				"_explorerName": "",
+				"_friendlyName": "Lunar Flashlight",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "lici",
+				"_explorerName": "",
+				"_friendlyName": "LICIACube",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "lro",
+				"_explorerName": "sc_lunar_reconnaissance_orbiter",
+				"_friendlyName": "Lunar Reconnaissance Orbiter",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "lnd1",
+				"_explorerName": "",
+				"_friendlyName": "Lunar Node 1"
+			},
+			{
+				"_name": "ltst",
+				"_explorerName": "",
+				"_friendlyName": "Interim Cryogenic Propulsion Stage",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "lucy",
+				"_explorerName": "",
+				"_friendlyName": "Lucy",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "lunah-map",
+				"_explorerName": "",
+				"_friendlyName": "Lunar Hydrogen MAPper"
+			},
+			{
+				"_name": "m01o",
+				"_explorerName": "sc_mars_odyssey",
+				"_friendlyName": "Mars Odyssey",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "m01s",
+				"_explorerName": "sc_mars_odyssey",
+				"_friendlyName": "Mars Odyssey",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "m20",
+				"_explorerName": "",
+				"_friendlyName": "Mars 2020 (Perseverance)",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "map",
+				"_explorerName": "sc_wmap",
+				"_friendlyName": "WMAP"
+			},
+			{
+				"_name": "mcoa",
+				"_explorerName": "sc_marco_a",
+				"_friendlyName": "MarCO A",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "mcob",
+				"_explorerName": "sc_marco_b",
+				"_friendlyName": "MarCO B",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "mer1",
+				"_explorerName": "sc_mars_exploration_rover_b",
+				"_friendlyName": "Opportunity",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "mer2",
+				"_explorerName": "sc_mars_exploration_rover_a",
+				"_friendlyName": "Spirit",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "mex",
+				"_explorerName": "sc_mars_express",
+				"_friendlyName": "Mars Express",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "mgs",
+				"_explorerName": "sc_mars_global_surveyor",
+				"_friendlyName": "Mars Global Surveyor"
+			},
+			{
+				"_name": "mlic",
+				"_explorerName": "",
+				"_friendlyName": "Lunar IceCube",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "mms1",
+				"_explorerName": "sc_mms1",
+				"_friendlyName": "MMS 1",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "mms2",
+				"_explorerName": "sc_mms2",
+				"_friendlyName": "MMS 2",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "mms3",
+				"_explorerName": "sc_mms3",
+				"_friendlyName": "MMS 3",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "mms4",
+				"_explorerName": "sc_mms4",
+				"_friendlyName": "MMS 4",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "mom",
+				"_explorerName": "sc_mars_orbiter_mission",
+				"_friendlyName": "Mars Orbiter Mission",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "mro",
+				"_explorerName": "sc_mars_reconnaissance_orbiter",
+				"_friendlyName": "Mars Reconnaissance Orbiter",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "mros",
+				"_explorerName": "sc_mars_reconnaissance_orbiter",
+				"_friendlyName": "Mars Reconnaissance Orbiter",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "msgr",
+				"_explorerName": "sc_messenger",
+				"_friendlyName": "MESSENGER",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "msl",
+				"_explorerName": "sc_mars_science_laboratory",
+				"_friendlyName": "Mars Science Laboratory (Curiosity)",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "musc",
+				"_explorerName": "sc_hayabusa",
+				"_friendlyName": "Hayabusa"
+			},
+			{
+				"_name": "mvn",
+				"_explorerName": "sc_maven",
+				"_friendlyName": "MAVEN",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "neas",
+				"_explorerName": "",
+				"_friendlyName": "Near Earth Asteroid Scout",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "nhpc",
+				"_explorerName": "sc_new_horizons",
+				"_friendlyName": "New Horizons",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "no15",
+				"_explorerName": "sc_noaa_15",
+				"_friendlyName": "NOAA 15"
+			},
+			{
+				"_name": "no16",
+				"_explorerName": "sc_noaa_16",
+				"_friendlyName": "NOAA 16"
+			},
+			{
+				"_name": "no17",
+				"_explorerName": "sc_noaa_17",
+				"_friendlyName": "NOAA 17"
+			},
+			{
+				"_name": "no18",
+				"_explorerName": "sc_noaa_18",
+				"_friendlyName": "NOAA 18"
+			},
+			{
+				"_name": "nsyt",
+				"_explorerName": "sc_insight",
+				"_friendlyName": "InSight",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "olin",
+				"_explorerName": "",
+				"_friendlyName": "SWARM-EX",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "omot",
+				"_explorerName": "",
+				"_friendlyName": "OMOTENASHI",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "orx",
+				"_explorerName": "sc_osiris_rex",
+				"_friendlyName": "OSIRIS-REx",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "phx",
+				"_explorerName": "sc_phoenix",
+				"_friendlyName": "Phoenix"
+			},
+			{
+				"_name": "plc",
+				"_explorerName": "sc_akatsuki",
+				"_friendlyName": "Akatsuki",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "polr",
+				"_explorerName": "sc_polar",
+				"_friendlyName": "POLAR"
+			},
+			{
+				"_name": "psyc",
+				"_explorerName": "",
+				"_friendlyName": "Psyche",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "rd1",
+				"_explorerName": "",
+				"_friendlyName": "Red Dragon 1"
+			},
+			{
+				"_name": "rfc",
+				"_explorerName": "",
+				"_friendlyName": "Reference Frame Calibration"
+			},
+			{
+				"_name": "rose",
+				"_explorerName": "sc_rosetta",
+				"_friendlyName": "Rosetta",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "rp",
+				"_explorerName": "",
+				"_friendlyName": "Resource Prospector",
+				"_link": "https://www.nasa.gov/resource-prospector"
+			},
+			{
+				"_name": "rsp",
+				"_explorerName": "",
+				"_friendlyName": "ExoMars Rover and Surface Platform"
+			},
+			{
+				"_name": "rsts",
+				"_explorerName": "",
+				"_friendlyName": "Resource System Time Sharing"
+			},
+			{
+				"_name": "sdu",
+				"_explorerName": "sc_stardust",
+				"_friendlyName": "Stardust"
+			},
+			{
+				"_name": "sele",
+				"_explorerName": "sc_kaguya",
+				"_friendlyName": "Kaguya"
+			},
+			{
+				"_name": "sgp",
+				"_explorerName": "",
+				"_friendlyName": "Space Geodesy Program"
+			},
+			{
+				"_name": "slim",
+				"_explorerName": "",
+				"_friendlyName": "Smart Lander for Investigating Moon",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "soho",
+				"_explorerName": "sc_soho",
+				"_friendlyName": "SOHO",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "spil",
+				"_explorerName": "",
+				"_friendlyName": "Beresheet"
+			},
+			{
+				"_name": "spp",
+				"_explorerName": "sc_parker_solar_probe",
+				"_friendlyName": "Parker Solar Probe",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "sta",
+				"_explorerName": "sc_stereo_ahead",
+				"_friendlyName": "STEREO A",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "stab",
+				"_explorerName": "sc_stereo_behind",
+				"_friendlyName": "STEREO B",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "stb",
+				"_explorerName": "sc_stereo_behind",
+				"_friendlyName": "STEREO B",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "stf",
+				"_explorerName": "sc_sirtf",
+				"_friendlyName": "Spitzer Space Telescope",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "td10",
+				"_explorerName": "sc_tdrs_10",
+				"_friendlyName": "TDRS 10",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "td11",
+				"_explorerName": "",
+				"_friendlyName": "TDRS 11",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "td12",
+				"_explorerName": "",
+				"_friendlyName": "TDRS 12",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "td13",
+				"_explorerName": "",
+				"_friendlyName": "TDRS 13",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "tdr1",
+				"_explorerName": "sc_tdrs_1",
+				"_friendlyName": "TDRS 1",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "tdr3",
+				"_explorerName": "sc_tdrs_3",
+				"_friendlyName": "TDRS 3",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "tdr4",
+				"_explorerName": "sc_tdrs_4",
+				"_friendlyName": "TDRS 4",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "tdr5",
+				"_explorerName": "sc_tdrs_5",
+				"_friendlyName": "TDRS 5",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "tdr6",
+				"_explorerName": "sc_tdrs_6",
+				"_friendlyName": "TDRS 6",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "tdr7",
+				"_explorerName": "sc_tdrs_7",
+				"_friendlyName": "TDRS 7",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "tdr8",
+				"_explorerName": "sc_tdrs_8",
+				"_friendlyName": "TDRS 8",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "tdr9",
+				"_explorerName": "sc_tdrs_9",
+				"_friendlyName": "TDRS 9",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "terr",
+				"_explorerName": "sc_terra",
+				"_friendlyName": "TERRA",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "tess",
+				"_explorerName": "",
+				"_friendlyName": "Transiting Exoplanet Survey Satellite",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "tgo",
+				"_explorerName": "",
+				"_friendlyName": "Trace Gas Orbiter",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "thb",
+				"_explorerName": "sc_themis_b",
+				"_friendlyName": "THEMIS B",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "thc",
+				"_explorerName": "sc_themis_c",
+				"_friendlyName": "THEMIS C",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "tm",
+				"_explorerName": "",
+				"_friendlyName": "Team Miles",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "tmm",
+				"_explorerName": "",
+				"_friendlyName": "Team Miles",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "ulys",
+				"_explorerName": "sc_ulysses",
+				"_friendlyName": "Ulysses"
+			},
+			{
+				"_name": "vex",
+				"_explorerName": "sc_venus_express",
+				"_friendlyName": "Venus Express",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "vgr1",
+				"_explorerName": "sc_voyager_1",
+				"_friendlyName": "Voyager 1",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "vgr2",
+				"_explorerName": "sc_voyager_2",
+				"_friendlyName": "Voyager 2",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "vlbi",
+				"_explorerName": "",
+				"_friendlyName": "V.L.B. Interferometry"
+			},
+			{
+				"_name": "wind",
+				"_explorerName": "sc_wind",
+				"_friendlyName": "WIND",
+				"_thumbnail": "true"
+			},
+			{
+				"_name": "xmm",
+				"_explorerName": "",
+				"_friendlyName": "X-ray Multi-Mirror Mission (XMM-Newton)",
+				"_thumbnail": "true"
+			}
+		]
+    }
