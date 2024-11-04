@@ -221,6 +221,65 @@ body{
   height: 50%;
 }
 
+.alert-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: fixed;
+  top: 125px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+
+  justify-content: start;
+  align-items: center;
+  z-index: 20;
+
+  pointer-events: none;
+}
+.Alert{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  
+  align-items: center;
+
+  color: white;
+  font-weight: bolder;
+  justify-content: space-between;
+}
+.Alert .icon{
+  font-size: 50px;
+}
+.Alert.success{
+  background-color: #81df65;
+}
+.Alert.error{
+  background-color: #d33e3e;
+}
+.Alert.info{
+  background-color: #3e86ca;
+}
+
+@keyframes alert-fade-out {
+  0%{
+    scale: 0;
+    transform: translateY(0px);
+  }
+  10%{
+    scale: 1;
+  }
+  80%{
+    opacity: 1;
+  }
+  100%{
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
 @keyframes dash {
   to {
     stroke-dashoffset: -1000;
