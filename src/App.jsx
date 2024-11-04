@@ -17,8 +17,7 @@ const Satellite = ({ satellite, index, parent }) => {
   return (
     <div className='satellite space-body' id={satellite.name}
       style={{
-        left: `${(1.0 + satellite.distance) * 100}%`, zIndex: 10,
-        transform: `translateY(${satellite.offsetY}px) translateX(-10px)`,
+        zIndex: 10,
         background: "black"
       }} onClick={() => parent.setState({ selected: satellite })}>
       {satellite.distance > 0 ? <MdSatelliteAlt className='icon' /> : <FaSatelliteDish className='icon' />}
@@ -42,6 +41,7 @@ class App extends Component {
     ],
 
     satellites: [],
+    groups: [],
     signals: [],
     markers: [],
     selected: null,
@@ -93,25 +93,33 @@ class App extends Component {
           });
         }
       });
+
       satellites = satellites.sort((a, b) => a.distance - b.distance);
-      const threshold = 0.5; // Define the distance threshold for overlap
-      const yOffsetIncrement = 100; // Define the offset increment for each satellite
+      const threshold = 0.5;
+      const groups = []; // Initialize an array to store groups of satellites
 
-      satellites.forEach((satellite, index) => {
-        let yOffset = 0;
-        let count = 0;
-        // Compare with previous satellites to check for overlap
-        for (let i = 0; i < index; i++) {
-          const otherSatellite = satellites[i];
+      satellites.forEach((satellite) => {
+        let addedToGroup = false;
 
-          // Check if distances are close enough to need offset adjustment
-          if (Math.abs(satellite.distance * 10 - otherSatellite.distance * 10) < threshold) {
-            yOffset += yOffsetIncrement;
+        let index = 0;
+        for (let group of groups) {
+          const referenceSatellite = group[0];
+          if (Math.abs(satellite.distance - referenceSatellite.distance) < threshold) {
+            satellite.groupIndex = index;
+            group.push(satellite);
+            addedToGroup = true;
+            break;
           }
+          index++;
         }
-
-        satellite.offsetY = yOffset;
+        if (!addedToGroup) {
+          satellite.groupIndex = groups.length;
+          groups.push([satellite]);
+        }
       });
+
+      this.setState({ groups });
+
       let downSignal = dish.downSignal;
       if (downSignal) {
         let downSignals = Array.isArray(downSignal) ? downSignal : [downSignal];
@@ -120,7 +128,7 @@ class App extends Component {
           if (signals.filter((a) => a.start.includes(signalAttributes.spacecraft)).length == 0) {
             signals.push({
               start: "Earth",
-              end: `${signalAttributes.spacecraft}`,
+              end: `group-${satellites.filter((a) => a.name == signalAttributes.spacecraft)[0].groupIndex}`,
               dataRate: signalAttributes.dataRate,
               frequency: signalAttributes.frequency,
               power: signalAttributes.power,
@@ -143,7 +151,7 @@ class App extends Component {
           if (signals.filter((a) => a.end.includes(signalAttributes.spacecraft)).length == 0) {
             signals.push({
               start: "Earth",
-              end: `${signalAttributes.spacecraft}`,
+              end: `group-${satellites.filter((a) => a.name == signalAttributes.spacecraft)[0].groupIndex}`,
               dataRate: signalAttributes.dataRate,
               frequency: signalAttributes.frequency,
               power: signalAttributes.power,
@@ -229,7 +237,7 @@ class App extends Component {
 
       // Use only the horizontal (x-axis) scroll
       scrollContainer.scrollTo({
-        left: rect.x,
+        left: rect.x + scrollContainer.scrollLeft,
         behavior: 'smooth'
       });
     }
@@ -323,10 +331,25 @@ class App extends Component {
             </div>
           ))}
           {
-            this.state.satellites.map((satellite, index) => (
-              <Satellite satellite={satellite} key={`satellite-${index}`} index={index} parent={this} />
+            this.state.groups.map((group, groupIndex) => (
+              <div key={`group-${groupIndex}`} id={`group-${groupIndex}`} 
+              className={`group ${group.length === 1 ? 'visible' : ''}`}  
+              style={{left: `${(1.0 + group[0].distance) * 100}%`}}>
+                {group.length > 1 &&<h1 className='num'>{group.length}</h1>}
+                <div className={`satellites`}>
+                {group.map((satellite, index) => (
+                  <Satellite 
+                    satellite={satellite} 
+                    key={`satellite-${groupIndex}-${index}`} 
+                    index={index} 
+                    parent={this} 
+                  />
+                ))}
+                </div>
+              </div>
             ))
           }
+
           {
             this.state.planets.map((body, index) => (
               <div className='space-body' id={body.name} key={`planet-${index}`}
