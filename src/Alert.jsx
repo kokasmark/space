@@ -41,8 +41,8 @@ class Alert extends Component{
             {
              alerts.map((alert,index) => (
                 <div className={`Alert ${alert.role}`} key={'alert-'+index} style={{animation: `alert-fade-out ${alert.time+10}ms linear`}}>
-                    {alert.role === "error" && <PiPlugsConnectedDuotone className="icon"/>}
-                    {alert.role === "success" && <PiPlugsDuotone className="icon"/>}
+                    {alert.role === "error" && <PiPlugsDuotone className="icon"/>}
+                    {alert.role === "success" && <PiPlugsConnectedDuotone className="icon"/>}
                     {alert.role === "info" && <MdInfoOutline className="icon"/>}
                     <p>{alert.message}</p>
                 </div>

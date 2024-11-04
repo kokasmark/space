@@ -67,43 +67,10 @@ body{
 }
 .group{
   position: absolute;
-  width: 50px;
-  height: 50px;
-  margin: 5px;
-  padding: 5px;
-  color: white;
-  border: 1px solid #4ba3eb;
-  border-radius: 50%;
-  background-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ 
+}
 
-  z-index: 100;
 
-  transform: translateX(-10px);
-}
-.group .num{
-  position: absolute;
-  text-align: center;
-}
-.group .satellites{
-  transition: 0.3s;
-  opacity: 0;
-  display: flex;
-  gap: 10px;
-  justify-content: start;
-}
-.group:hover{
-  background-color: transparent;
-  border: none;
-}
-.group:hover .num{
-  opacity: 0;
-}
-.group:hover .satellites{
-  opacity: 1;
-}
 .space-body:not(.satellite):not(#Jupiter):not(#Saturn){
   padding: 30px;
   transform: translate(-30px,0);
@@ -236,6 +203,7 @@ body{
 }
 .arrow{
   transition: 0.3s;
+  z-index: 99;
 }
 .arrow div{
   animation-duration: inherit;

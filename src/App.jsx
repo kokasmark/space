@@ -11,14 +11,16 @@ import { GrSpectrum } from 'react-icons/gr';
 import { BsSpeedometer2 } from 'react-icons/bs';
 import { BiInfoCircle } from 'react-icons/bi';
 import Alert from './Alert';
+import Masonry from "react-masonry-css";
 
 
-const Satellite = ({ satellite, index, parent }) => {
+const Satellite = ({ satellite, index, parent, offset }) => {
   return (
     <div className='satellite space-body' id={satellite.name}
       style={{
         zIndex: 10,
-        background: "black"
+        background: "black",
+        transform: `translate(${offset.x}px, ${offset.y}px)`
       }} onClick={() => parent.setState({ selected: satellite })}>
       {satellite.distance > 0 ? <MdSatelliteAlt className='icon' /> : <FaSatelliteDish className='icon' />}
       <p className='name'>{satellite.name}</p>
@@ -127,8 +129,8 @@ class App extends Component {
           const signalAttributes = signal._attributes;
           if (signals.filter((a) => a.start.includes(signalAttributes.spacecraft)).length == 0) {
             signals.push({
-              start: "Earth",
-              end: `group-${satellites.filter((a) => a.name == signalAttributes.spacecraft)[0].groupIndex}`,
+              start: `${signalAttributes.spacecraft}`,
+              end: "Earth",
               dataRate: signalAttributes.dataRate,
               frequency: signalAttributes.frequency,
               power: signalAttributes.power,
@@ -151,7 +153,7 @@ class App extends Component {
           if (signals.filter((a) => a.end.includes(signalAttributes.spacecraft)).length == 0) {
             signals.push({
               start: "Earth",
-              end: `group-${satellites.filter((a) => a.name == signalAttributes.spacecraft)[0].groupIndex}`,
+              end: `${signalAttributes.spacecraft}`,
               dataRate: signalAttributes.dataRate,
               frequency: signalAttributes.frequency,
               power: signalAttributes.power,
@@ -169,7 +171,7 @@ class App extends Component {
     });
 
     if (this.alerts.current) {
-      this.alerts.current.fire("Data updated!","info",1000)
+      this.alerts.current.fire("Data updated!", "info", 1000)
     }
     const markers = Array.from({ length: Math.ceil(Math.max(...satellites.map(s => s.distance))) }, (_, i) => (i + 1))
     this.setState({
@@ -202,9 +204,10 @@ class App extends Component {
 
     scrollContainer.addEventListener('wheel', (event) => {
       event.preventDefault();
-      scrollContainer.scrollLeft += event.deltaY; // Applies vertical scroll delta to horizontal scroll
-      this.setState({ scrollDelta: scrollContainer.scrollLeft / scrollContainer.scrollWidth })
+      scrollContainer.scrollBy({ left: event.deltaY*10, behavior: 'smooth' }); // Smooth horizontal scroll
+      this.setState({ scrollDelta: scrollContainer.scrollLeft / scrollContainer.scrollWidth });
     });
+    
 
     window.addEventListener('keydown', this.handleKeyDown);
     window.addEventListener('keyup', this.handleKeyUp);
@@ -273,7 +276,7 @@ class App extends Component {
       newSatellites.forEach(satellite => {
         if (!prevSatelliteNames.has(satellite.name)) {
           if (this.alerts.current) {
-            this.alerts.current.fire(`${satellite.name} connected!`, "success", 2000+count*100);
+            this.alerts.current.fire(`${satellite.name} connected!`, "success", 2000 + count * 100);
           }
           count++;
         }
@@ -283,7 +286,7 @@ class App extends Component {
       prevSatellites.forEach(satellite => {
         if (!newSatelliteNames.has(satellite.name)) {
           if (this.alerts.current) {
-            this.alerts.current.fire(`${satellite.name} disconnected!`, "error", 2000+count*100);
+            this.alerts.current.fire(`${satellite.name} disconnected!`, "error", 2000 + count * 100);
           }
           count++;
         }
@@ -304,7 +307,7 @@ class App extends Component {
       <div className="App">
         <div className='background' style={{ left: `${-this.state.scrollDelta * 200}%` }} />
         <div className='space'>
-          {this.state.markers.map((marker, index) => (
+          {/* {this.state.markers.map((marker, index) => (
             <div style={{
               position: 'absolute', top: 0, left: `${marker * 100}%`,
               color: 'white', width: 200, display: 'flex',
@@ -316,7 +319,7 @@ class App extends Component {
               </div>
               <span style={{ width: 2, height: '100vh', backgroundColor: '#4ba3eb' }}></span>
             </div>
-          ))}
+          ))} */}
           {this.state.signals.map((signal, index) => (
             <div className={`arrow`} info={`${signal.timeToReach}`}
               style={{ opacity: this.getSignalOpacity(signal.power), animationDuration: `${signal.timeToReach}s` }}
@@ -330,25 +333,36 @@ class App extends Component {
               />
             </div>
           ))}
-          {
-            this.state.groups.map((group, groupIndex) => (
-              <div key={`group-${groupIndex}`} id={`group-${groupIndex}`} 
-              className={`group ${group.length === 1 ? 'visible' : ''}`}  
-              style={{left: `${(1.0 + group[0].distance) * 100}%`}}>
-                {group.length > 1 &&<h1 className='num'>{group.length}</h1>}
-                <div className={`satellites`}>
-                {group.map((satellite, index) => (
-                  <Satellite 
-                    satellite={satellite} 
-                    key={`satellite-${groupIndex}-${index}`} 
-                    index={index} 
-                    parent={this} 
+          {this.state.groups.map((group, groupIndex) => (
+            <div
+              key={`group-${groupIndex}`}
+              className="group"
+              style={{
+                left: `${(1.0 + group[0].distance) * 100}%`,
+                width: "300px", // Set a fixed size for the group container
+                height: "200px",
+                borderRadius: "50%",
+                overflow: "visible",
+              }}
+            >
+              {group.map((satellite, index) => {
+                const angle = (index / group.length) * 2 * Math.PI; // Calculate angle in radians
+                const radius = 200; // Radius of the circular spread
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius;
+
+                return (
+                  <Satellite
+                    satellite={satellite}
+                    key={`satellite-${groupIndex}-${index}`}
+                    parent={this}
+                    offset={{x,y}}
                   />
-                ))}
-                </div>
-              </div>
-            ))
-          }
+                );
+              })}
+            </div>
+          ))}
+
 
           {
             this.state.planets.map((body, index) => (
@@ -363,7 +377,7 @@ class App extends Component {
             <h1>Deep Space Network</h1>
             <h3>Interactive Map</h3>
 
-            <p>Distances are in Astronomical Units and they are in scale.
+            <p>Distances are in Astronomical Units and they are in scale(for the most part, local randomness only to overcome overlapse).
               Click on a signal's line and it will scroll from one end to the other.
               Click on a satellite to view various data by hovering the handle at the bottom of the page.
               Freely scroll to feel the true scale of <b>space</b>...
@@ -397,7 +411,7 @@ class App extends Component {
             </div>
             : <div className='satellite-info'><h1>No satellite selected.</h1></div>}
         </div>
-        <Alert ref={this.alerts}/>
+        <Alert ref={this.alerts} />
       </div>
     );
   }
