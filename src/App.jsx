@@ -248,7 +248,7 @@ handleKeyUp = (event) => {
           {this.state.markers.map((marker,index) =>(
             <div style={{position: 'absolute', top: 0, left: `${marker*100}%`, 
             color: 'white', width: 200, display: 'flex', 
-            flexDirection: 'column', justifyContent: 'center', textAlign: 'center', alignItems: 'center'}}>
+            flexDirection: 'column', justifyContent: 'center', textAlign: 'center', alignItems: 'center',transform: 'translateX(-75px)'}}>
               <div style={{backgroundColor: '#4ba3eb', borderRadius: '0px 0px 50% 50%', padding: 20}}>
                 <h1 style={{margin: 0}}>{marker} AU</h1>
                 <p>({Math.round(marker * 149597870.7 / 1000000)} million km)</p>
