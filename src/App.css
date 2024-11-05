@@ -7,16 +7,19 @@ body{
 
   font-family: monospace;
 }
+.App{
+  width: 100%;
+  height: 100%;
+}
 .background{
-  width: 150%;
-  height: 200%;
+  height: 100%;
   background: url("./stars.jpg");
   position: absolute;
-  transform: translateX(-25%);
   top: 0px;
   left: 0px;
 
-  transition: 1s;
+  opacity: 0.5;
+  transition: 2s;
 }
 ::-webkit-scrollbar {
   height: 15px;
@@ -58,6 +61,10 @@ body{
   text-align: center;
   transition: 1s;
 }
+.space-body.moon{
+  transform-origin: -50% 50%;
+  animation: moon-orbit 5s infinite linear;
+}
 .satellite{
   position: relative;
   padding: 5px;
@@ -67,7 +74,11 @@ body{
 }
 .group{
   position: absolute;
- 
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+  gap: 10px;
+  flex-direction: column;
 }
 
 
@@ -104,7 +115,7 @@ body{
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  box-shadow: inset -10px -10px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset -20px -20px 10px rgba(0, 0, 0, 0.8);
   z-index: -1;
 }
 
@@ -150,12 +161,31 @@ body{
   display: flex;
   justify-content: center;
   align-items: start;
-
+  flex-direction: row;
+  flex-wrap: wrap;
   transition: 1s;
   transform: translateY(100%);
   border-top: 2px solid white;
+  max-height: 90%;
 
   z-index: 100;
+}
+.more .content{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.more .title{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.more .title h3{
+  width: 100%;
+  text-align: center;
 }
 .satellite-info{
   display: flex;
@@ -276,7 +306,36 @@ body{
 .Alert.info{
   background-color: #3e86ca;
 }
-
+@media only screen and (max-width: 600px) {
+  #Sun{
+    display: none;
+  }
+  .about{
+    scale: 0.7;
+    transform: translateX(-25%);
+    top: 0%;
+  }
+}
+@keyframes background {
+  0%{
+    opacity: 0.7;
+  }
+  20%{
+    opacity: 0.9;
+  }
+  40%{
+    opacity: 0.8;
+  }
+  60%{
+    opacity: 0.5;
+  }
+  90%{
+    opacity: 0.75;
+  }
+  100%{
+    opacity: 0.7;
+  }
+}
 @keyframes alert-fade-out {
   0%{
     scale: 0;

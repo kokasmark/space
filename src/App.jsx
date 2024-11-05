@@ -55,7 +55,8 @@ class App extends Component {
   async dsnData() {
     const requestOptions = {
       method: "GET",
-      redirect: "follow"
+      redirect: "follow",
+      cache: "no-store"
     };
 
     try {
@@ -81,6 +82,7 @@ class App extends Component {
       let targets = Array.isArray(target) ? target : [target];
       let s = spacecrafts;
       targets.forEach(t => {
+        if(t !== undefined) {
         const attributes = t._attributes;
         if (satellites.filter((a) => a.name == attributes.name).length == 0) {
           satellites.push({
@@ -94,6 +96,7 @@ class App extends Component {
             rtlt: attributes.rtlt
           });
         }
+      }
       });
 
       satellites = satellites.sort((a, b) => a.distance - b.distance);
@@ -134,6 +137,7 @@ class App extends Component {
               dataRate: signalAttributes.dataRate,
               frequency: signalAttributes.frequency,
               power: signalAttributes.power,
+              active: signalAttributes.active,
               timeToReach: parseFloat(satellites.filter((a) => a.name == signalAttributes.spacecraft)[0].rtlt) / 20
             });
           }
@@ -157,6 +161,7 @@ class App extends Component {
               dataRate: signalAttributes.dataRate,
               frequency: signalAttributes.frequency,
               power: signalAttributes.power,
+              active: signalAttributes.active,
               timeToReach: parseFloat(satellites.filter((a) => a.name == signalAttributes.spacecraft)[0].rtlt) / 20
             });
           }
@@ -249,22 +254,76 @@ class App extends Component {
 
   async fetchPlanetData() {
     const planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'];
-    const distances = [];
+    const celestialBodies = [
+        { type: 'star', name: 'Sun', distance: 0, scale: '109', color: 'yellow' }
+    ];
+
+    if (this.alerts.current) {
+      this.alerts.current.fire("Loading planets and significant moons!", "info", 10000)
+    }
 
     for (const planet of planets) {
-      const response = await fetch(`https://api.le-systeme-solaire.net/rest/bodies/${planet.toLowerCase()}`);
-      const data = await response.json();
-      distances.push({ name: planet, distanceFromSun: data.semimajorAxis / 149597870.7 }); // Convert km to AU
+        const response = await fetch(`https://api.le-systeme-solaire.net/rest/bodies/${planet.toLowerCase()}`);
+        const data = await response.json();
+
+        // Add the planet itself
+        celestialBodies.push({
+            type: 'planet',
+            name: planet,
+            distance: data.semimajorAxis ? data.semimajorAxis / 149597870.7 : 0, // Convert km to AU
+            scale: data.meanRadius ? (data.meanRadius / 6371).toFixed(2) : 1, // Approximate scale using Earth's radius
+            color: this.getPlanetColor(planet)
+        });
+
+        // if (data.moons && data.moons.length > 0) {
+        //     for (const moon of data.moons) {
+        //         const moonResponse = await fetch(moon.rel);
+        //         try{
+        //         const moonData = await moonResponse.json();
+        //         let scale = moonData.meanRadius ? parseFloat(moonData.meanRadius/ 6371).toFixed(2)  : 0.1
+        //         if(scale > 0.2){
+        //         celestialBodies.push({
+        //             type: 'planet',
+        //             name: moonData.englishName,
+        //             distance: data.semimajorAxis ? parseFloat((data.semimajorAxis / 149597870.7) + (moonData.semimajorAxis || 0) / 149597870.7) : 0, // Distance relative to the Sun
+        //             scale: scale, // Scale relative to Earth's radius
+        //             color: 'gray',
+        //             moon: true
+        //         });
+        //       }
+        //       }
+        //       catch{
+
+        //       }
+        //     }
+        // }
     }
-    let updatedPlanets = this.state.planets;
-    for (var i = 0; i < distances.length; i++) {
-      updatedPlanets[i + 1].distance = distances[i].distanceFromSun
-    }
-    this.setState({ planets: updatedPlanets })
-  }
+    // Update the state with the populated celestial bodies array
+    this.setState({ planets: celestialBodies });
+
+}
+
+// Helper function to determine color based on planet name
+getPlanetColor(planet) {
+    const colors = {
+        Mercury: 'gray',
+        Venus: 'orange',
+        Earth: 'blue',
+        Mars: 'red',
+        Jupiter: 'orange',
+        Saturn: 'yellow',
+        Uranus: 'lightblue',
+        Neptune: 'blue'
+    };
+    return colors[planet] || 'white'; // Default color if not found
+}
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.satellites !== this.state.satellites) {
+
+      const scrollWidth = document.querySelector('.space').scrollWidth;
+      document.querySelector('.space .background').style.width = `${scrollWidth}px`;
+
       const newSatellites = this.state.satellites;
       const prevSatellites = prevState.satellites;
 
@@ -276,7 +335,7 @@ class App extends Component {
       newSatellites.forEach(satellite => {
         if (!prevSatelliteNames.has(satellite.name)) {
           if (this.alerts.current) {
-            this.alerts.current.fire(`${satellite.name} connected!`, "success", 2000 + count * 100);
+            this.alerts.current.fire(`${satellite.name} connected!`, "success", 5000 + count * 100);
           }
           count++;
         }
@@ -286,7 +345,7 @@ class App extends Component {
       prevSatellites.forEach(satellite => {
         if (!newSatelliteNames.has(satellite.name)) {
           if (this.alerts.current) {
-            this.alerts.current.fire(`${satellite.name} disconnected!`, "error", 2000 + count * 100);
+            this.alerts.current.fire(`${satellite.name} disconnected!`, "error", 5000 + count * 100);
           }
           count++;
         }
@@ -305,9 +364,10 @@ class App extends Component {
     const { selected } = this.state;
     return (
       <div className="App">
-        <div className='background' style={{ left: `${-this.state.scrollDelta * 200}%` }} />
+       
         <div className='space'>
-          {/* {this.state.markers.map((marker, index) => (
+        <div className='background' style={{ left: `${-this.state.scrollDelta * 200}%` }} />
+        {this.state.markers.map((marker, index) => (
             <div style={{
               position: 'absolute', top: 0, left: `${marker * 100}%`,
               color: 'white', width: 200, display: 'flex',
@@ -319,13 +379,13 @@ class App extends Component {
               </div>
               <span style={{ width: 2, height: '100vh', backgroundColor: '#4ba3eb' }}></span>
             </div>
-          ))} */}
+          ))}
           {this.state.signals.map((signal, index) => (
             <div className={`arrow`} info={`${signal.timeToReach}`}
               style={{ opacity: this.getSignalOpacity(signal.power), animationDuration: `${signal.timeToReach}s` }}
               onClick={() => this.scrollToBody(signal)}>
               <Xarrow start={signal.start} end={signal.end} key={`signal-${index}`}
-                color={"#4ba3eb"}
+                color={signal.active === "true"? "#4ba3eb" : "#808080"}
                 path='smooth'
                 showHead={false}
                 strokeWidth={2}
@@ -339,17 +399,13 @@ class App extends Component {
               className="group"
               style={{
                 left: `${(1.0 + group[0].distance) * 100}%`,
-                width: "300px", // Set a fixed size for the group container
-                height: "200px",
                 borderRadius: "50%",
                 overflow: "visible",
               }}
             >
               {group.map((satellite, index) => {
-                const angle = (index / group.length) * 2 * Math.PI; // Calculate angle in radians
-                const radius = 200; // Radius of the circular spread
-                const x = Math.cos(angle) * radius;
-                const y = Math.sin(angle) * radius;
+                const x = group[0].distance - satellite.distance;
+                const y = 0;
 
                 return (
                   <Satellite
@@ -366,7 +422,7 @@ class App extends Component {
 
           {
             this.state.planets.map((body, index) => (
-              <div className='space-body' id={body.name} key={`planet-${index}`}
+              <div className={`space-body ${body.moon ? 'moon' : ''}`} id={body.name} key={`planet-${index}`}
                 style={{ left: `${body.distance * 100}%`, scale: body.scale, backgroundColor: body.color }}>
 
               </div>
@@ -380,6 +436,7 @@ class App extends Component {
             <p>Distances are in Astronomical Units and they are in scale(for the most part, local randomness only to overcome overlapse).
               Click on a signal's line and it will scroll from one end to the other.
               Click on a satellite to view various data by hovering the handle at the bottom of the page.
+              CTRL + Click on signal's line reverses the direction.
               Freely scroll to feel the true scale of <b>space</b>...
             </p>
             <p>Created by: Kokas Márk</p>
@@ -387,9 +444,13 @@ class App extends Component {
         </div>
         <div className='more'>
           {selected != null ?
+            <div className='content'>
+            <div className='title'>
+               <h3>{selected.friendlyName}</h3>
+               {selected.friendlyName != undefined && <img width={'90%'} style={{ borderRadius: 10 }} src={`https://eyes.nasa.gov/apps/dsn-now/images/spacecraft/${selected.friendlyName.toLowerCase().replace(" ", "%20")}.jpg`} />}
+            </div>
             <div className='satellite-info'>
-              <h3>{selected.friendlyName}</h3>
-              <img width={'90%'} style={{ borderRadius: 10 }} src={`https://eyes.nasa.gov/apps/dsn-now/images/spacecraft/${selected.friendlyName.toLowerCase().replace(" ", "%20")}.jpg`} />
+             
 
               <h3>Information</h3>
               <p><b>{selected.distance}</b> AU from Earth.</p>
@@ -408,6 +469,7 @@ class App extends Component {
                   ))
                 }
               </div>
+            </div>
             </div>
             : <div className='satellite-info'><h1>No satellite selected.</h1></div>}
         </div>
